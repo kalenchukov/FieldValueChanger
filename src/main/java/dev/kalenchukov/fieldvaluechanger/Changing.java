@@ -10,6 +10,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Интерфейс для реализации изменяющего значение поля.
+ *
+ * @param <T> Объект типа значения поля.
  */
 public interface Changing<T>
 {
