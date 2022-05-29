@@ -10,7 +10,7 @@ import java.lang.annotation.*;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})
-@Repeatable(Changer.Many.class)
+@Repeatable(Changer.ManyChanger.class)
 public @interface Changer
 {
 	/**
@@ -28,7 +28,7 @@ public @interface Changer
 	 */
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.FIELD)
-	@interface Many
+	@interface ManyChanger
 	{
 		/**
 		 * @see Changer

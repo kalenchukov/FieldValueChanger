@@ -59,7 +59,7 @@ public final class FieldValueChangerTest
 	{
 		class Experimental
 		{
-			@Changer.Many({
+			@Changer.ManyChanger({
 				@Changer(changer = CommentChanger.class),
 				@Changer(changer = QuoteChanger.class)
 			})
