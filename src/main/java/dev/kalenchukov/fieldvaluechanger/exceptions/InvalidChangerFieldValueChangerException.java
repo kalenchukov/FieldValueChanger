@@ -9,22 +9,22 @@ package dev.kalenchukov.fieldvaluechanger.exceptions;
 /**
  * Исключение для некорректного изменяющего значение поля.
  */
-public class BadChangerFieldValueChangerException extends RuntimeException
+public class InvalidChangerFieldValueChangerException extends RuntimeException
 {
     /**
-     * Конструктор для {@code BadChangerFieldValueChangerException}.
+     * Конструктор для {@code InvalidChangerFieldValueChangerException}.
      */
-    public BadChangerFieldValueChangerException()
+    public InvalidChangerFieldValueChangerException()
     {
         super();
     }
 
     /**
-     * Конструктор для {@code BadChangerFieldValueChangerException}.
+     * Конструктор для {@code InvalidChangerFieldValueChangerException}.
      *
      * @param message Сообщение.
      */
-    public BadChangerFieldValueChangerException(String message)
+    public InvalidChangerFieldValueChangerException(String message)
     {
         super(message);
     }

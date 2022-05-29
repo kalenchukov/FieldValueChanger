@@ -6,7 +6,7 @@
 
 package dev.kalenchukov.fieldvaluechanger;
 
-import dev.kalenchukov.fieldvaluechanger.exceptions.BadChangerFieldValueChangerException;
+import dev.kalenchukov.fieldvaluechanger.exceptions.InvalidChangerFieldValueChangerException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
@@ -26,7 +26,7 @@ public interface FieldValueChanging
 	/**
 	 * Изменяет значение поля.
 	 *
-	 * @throws BadChangerFieldValueChangerException Если изменяющий некорректный.
+	 * @throws InvalidChangerFieldValueChangerException Если изменяющий некорректный.
 	 */
-	void change() throws BadChangerFieldValueChangerException;
+	void change() throws InvalidChangerFieldValueChangerException;
 }

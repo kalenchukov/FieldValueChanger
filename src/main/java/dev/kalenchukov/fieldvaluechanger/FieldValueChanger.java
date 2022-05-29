@@ -7,7 +7,7 @@
 package dev.kalenchukov.fieldvaluechanger;
 
 import dev.kalenchukov.fieldvaluechanger.annotations.Changer;
-import dev.kalenchukov.fieldvaluechanger.exceptions.BadChangerFieldValueChangerException;
+import dev.kalenchukov.fieldvaluechanger.exceptions.InvalidChangerFieldValueChangerException;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
@@ -80,7 +80,7 @@ public class FieldValueChanger implements FieldValueChanging
 	/**
 	 * @see FieldValueChanger#change()
 	 */
-	public void change() throws BadChangerFieldValueChangerException
+	public void change() throws InvalidChangerFieldValueChangerException
 	{
 		LOG.debug(String.format(
 			localeLogs.getString("60001"),
@@ -114,10 +114,10 @@ public class FieldValueChanger implements FieldValueChanging
 	 * @param field Поле класса в котором необходимо изменить значение.
 	 * @param annotationsChanger Аннотации {@code Changer} применяемые к полю класса.
 	 *
-	 * @throws BadChangerFieldValueChangerException Если изменяющий некорректный.
+	 * @throws InvalidChangerFieldValueChangerException Если изменяющий некорректный.
 	 */
 	private void changeValueField(@NotNull final Field field, @NotNull Changer @NotNull [] annotationsChanger)
-		throws BadChangerFieldValueChangerException
+		throws InvalidChangerFieldValueChangerException
 	{
 		Objects.requireNonNull(field);
 		Objects.requireNonNull(annotationsChanger);
@@ -146,7 +146,7 @@ public class FieldValueChanger implements FieldValueChanging
 			}
 			catch (Exception exception)
 			{
-				throw new BadChangerFieldValueChangerException(String.format(
+				throw new InvalidChangerFieldValueChangerException(String.format(
 					localeExceptions.getString("70001"),
 					changer.getName(),
 					this.object.getClass().getName()
