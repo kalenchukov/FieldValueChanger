@@ -19,7 +19,7 @@ public interface FieldValueChanging
 	/**
 	 * Устанавливает локализацию.
 	 *
-	 * @param locale Локаль.
+	 * @param locale Локализация.
 	 */
 	void setLocale(@NotNull Locale locale);
 

@@ -21,8 +21,7 @@ import java.util.*;
 public class FieldValueChanger implements FieldValueChanging
 {
 	/**
-	 * Локаль.
-	 * Для изменения локали необходимо использовать {@link #setLocale(Locale)}.
+	 * Локализация.
 	 */
 	@NotNull
 	private Locale locale = new Locale("ru", "RU");
