@@ -33,7 +33,7 @@ public class FieldValueChanger implements FieldValueChanging
 	private final Object object;
 
 	/**
-	 * Устанавливает логгер для данного класса.
+	 * Логгер для данного класса.
 	 */
 	@NotNull
 	private static final Logger LOG = Logger.getLogger(FieldValueChanger.class);
