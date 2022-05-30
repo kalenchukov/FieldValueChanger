@@ -39,13 +39,13 @@ public class FieldValueChanger implements FieldValueChanging
 	private static final Logger LOG = Logger.getLogger(FieldValueChanger.class);
 
 	/**
-	 * Устанавливает локализованные тексты логирования.
+	 * Локализованные тексты логирования.
 	 */
 	@NotNull
 	private ResourceBundle localeLogs = ResourceBundle.getBundle("localizations/logs", locale);
 
 	/**
-	 * Устанавливает локализованные тексты исключений.
+	 * Локализованные тексты исключений.
 	 */
 	@NotNull
 	private ResourceBundle localeExceptions = ResourceBundle.getBundle("localizations/exceptions", locale);
