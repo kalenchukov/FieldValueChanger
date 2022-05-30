@@ -26,7 +26,7 @@ public interface FieldValueChanging
 	/**
 	 * Изменяет значение поля.
 	 *
-	 * @throws InvalidChangerClassException Если изменяющий некорректный.
+	 * @throws InvalidChangerClassException Если изменяющий класс некорректный.
 	 */
 	void change() throws InvalidChangerClassException;
 }
