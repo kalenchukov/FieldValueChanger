@@ -3,21 +3,23 @@
 
 ### Создание изменяющего класса
 Для создания изменяющего класса, необходимо создать класс реализующий интерфейс "Changing".
+
 ```java
-import dev.kalenchukov.fieldvaluechanger.Changing;
+import Changing;
 
 public final class CommentChanger implements Changing<String>
 {
-    @Nullable
-    @Override
-    public String changeValue(@Nullable String value)
-    {
-        if (value == null) {
-            return null;
-        }
-    
-        return value.toUpperCase();
-    }
+	@Nullable
+	@Override
+	public String changeValue(@Nullable String value)
+	{
+		if (value == null)
+		{
+			return null;
+		}
+
+		return value.toUpperCase();
+	}
 }
 ```
 
@@ -26,18 +28,19 @@ public final class CommentChanger implements Changing<String>
 Данная аннотация содержит параметр для указания изменяющего класса.
 
 Класс, в котором необходимо изменить значение поля:
+
 ```java
-import dev.kalenchukov.fieldvaluechanger.annotations.Changer;
+import Changer;
 
 public class Experimental
 {
-    @Changer(changer = CommentChanger.class)
-    private String comment = "Мой комментарий";
-    
-    public String getComment()
-    {
-        return this.comment;
-    }
+	@Changer(changer = CommentChanger.class)
+	private String comment = "Мой комментарий";
+
+	public String getComment()
+	{
+		return this.comment;
+	}
 }
 ```
 Вызов изменяющего:

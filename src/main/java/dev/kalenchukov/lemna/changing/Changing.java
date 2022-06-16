@@ -4,17 +4,17 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.fieldvaluechanger;
+package dev.kalenchukov.lemna.changing;
 
-import dev.kalenchukov.fieldvaluechanger.exceptions.InvalidChangerClassException;
+import dev.kalenchukov.lemna.changing.exceptions.InvalidModifyingClassException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 
 /**
- * Интерфейс для реализации изменяющего значение поля.
+ * Интерфейс для реализации изменяющего значения полей.
  */
-public interface FieldValueChanging
+public interface Changing
 {
 	/**
 	 * Устанавливает локализацию.
@@ -26,7 +26,7 @@ public interface FieldValueChanging
 	/**
 	 * Изменяет значение поля.
 	 *
-	 * @throws InvalidChangerClassException Если изменяющий класс некорректный.
+	 * @throws InvalidModifyingClassException Если изменяющий класс некорректный.
 	 */
-	void change() throws InvalidChangerClassException;
+	void change() throws InvalidModifyingClassException;
 }

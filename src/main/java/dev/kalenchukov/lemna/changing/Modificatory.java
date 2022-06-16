@@ -4,7 +4,7 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.fieldvaluechanger;
+package dev.kalenchukov.lemna.changing;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
  *
  * @param <T> Объект типа значения поля.
  */
-public interface Changing<T>
+public interface Modificatory<T>
 {
 	/**
 	 * Изменяет значение поля.
@@ -22,5 +22,5 @@ public interface Changing<T>
 	 * @return Возвращает изменённое значение поля.
 	 */
 	@Nullable
-	T changeValue(@Nullable T value);
+	T modifyValue(@Nullable T value);
 }

@@ -4,4 +4,4 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.fieldvaluechanger;
+package dev.kalenchukov.lemna.changing;

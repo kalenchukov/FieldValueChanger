@@ -4,10 +4,9 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.fieldvaluechanger;
+package dev.kalenchukov.lemna.changing;
 
-import dev.kalenchukov.fieldvaluechanger.annotations.Changer;
-import dev.kalenchukov.fieldvaluechanger.exceptions.InvalidChangerClassException;
+import dev.kalenchukov.lemna.changing.exceptions.InvalidModifyingClassException;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,7 +17,7 @@ import java.util.*;
 /**
  * Класс для изменения значений полей класса.
  */
-public class FieldValueChanger implements FieldValueChanging
+public class Changer implements Changing
 {
 	/**
 	 * Локализация.
@@ -36,7 +35,7 @@ public class FieldValueChanger implements FieldValueChanging
 	 * Логгер для данного класса.
 	 */
 	@NotNull
-	private static final Logger LOG = Logger.getLogger(FieldValueChanger.class);
+	private static final Logger LOG = Logger.getLogger(Changer.class);
 
 	/**
 	 * Локализованные тексты логирования.
@@ -55,13 +54,13 @@ public class FieldValueChanger implements FieldValueChanging
 	 *
 	 * @param object Объект класса в котором необходимо изменить значения полей.
 	 */
-	public FieldValueChanger(@NotNull final Object object)
+	public Changer(@NotNull final Object object)
 	{
 		this.object = object;
 	}
 
 	/**
-	 * @see FieldValueChanger#setLocale(Locale)
+	 * @see Changer#setLocale(Locale)
 	 */
 	public void setLocale(@NotNull Locale locale)
 	{
@@ -77,9 +76,9 @@ public class FieldValueChanger implements FieldValueChanging
 	}
 
 	/**
-	 * @see FieldValueChanger#change()
+	 * @see Changer#change()
 	 */
-	public void change() throws InvalidChangerClassException
+	public void change() throws InvalidModifyingClassException
 	{
 		LOG.debug(String.format(
 			localeLogs.getString("60001"),
@@ -88,7 +87,8 @@ public class FieldValueChanger implements FieldValueChanging
 
 		for (Field field : this.object.getClass().getDeclaredFields())
 		{
-			Changer[] annotationsChanger = field.getAnnotationsByType(Changer.class);
+			dev.kalenchukov.lemna.changing.annotations.Changer[] annotationsChanger = field.getAnnotationsByType(
+				dev.kalenchukov.lemna.changing.annotations.Changer.class);
 
 			if (annotationsChanger.length == 0) {
 				continue;
@@ -113,17 +113,17 @@ public class FieldValueChanger implements FieldValueChanging
 	 * @param field Поле класса в котором необходимо изменить значение.
 	 * @param annotationsChanger Аннотации {@code Changer} применяемые к полю класса.
 	 *
-	 * @throws InvalidChangerClassException Если изменяющий некорректный.
+	 * @throws InvalidModifyingClassException Если изменяющий некорректный.
 	 */
-	private void changeValueField(@NotNull final Field field, @NotNull Changer @NotNull [] annotationsChanger)
-		throws InvalidChangerClassException
+	private void changeValueField(@NotNull final Field field, @NotNull dev.kalenchukov.lemna.changing.annotations.Changer @NotNull [] annotationsChanger)
+		throws InvalidModifyingClassException
 	{
 		Objects.requireNonNull(field);
 		Objects.requireNonNull(annotationsChanger);
 
-		for (Changer annotationChanger : annotationsChanger)
+		for (dev.kalenchukov.lemna.changing.annotations.Changer annotationChanger : annotationsChanger)
 		{
-			Class<? extends Changing<?>> changer = annotationChanger.changer();
+			Class<? extends Modificatory<?>> changer = annotationChanger.modifier();
 
 			LOG.debug(String.format(
 				localeLogs.getString("60003"),
@@ -133,7 +133,7 @@ public class FieldValueChanger implements FieldValueChanging
 
 			try
 			{
-				Method method = changer.getDeclaredMethod("changeValue", field.getType());
+				Method method = changer.getDeclaredMethod("modifyValue", field.getType());
 
 				field.set(
 					this.object,
@@ -145,7 +145,7 @@ public class FieldValueChanger implements FieldValueChanging
 			}
 			catch (Exception exception)
 			{
-				throw new InvalidChangerClassException(String.format(
+				throw new InvalidModifyingClassException(String.format(
 					localeExceptions.getString("70001"),
 					changer.getName(),
 					this.object.getClass().getName()

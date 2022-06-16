@@ -4,16 +4,16 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.fieldvaluechanger.supports;
+package dev.kalenchukov.lemna.changing.supports;
 
-import dev.kalenchukov.fieldvaluechanger.Changing;
+import dev.kalenchukov.lemna.changing.Modificatory;
 import org.jetbrains.annotations.Nullable;
 
-public final class CommentChanger implements Changing<String>
+public final class CommentModifier implements Modificatory<String>
 {
 	@Nullable
 	@Override
-	public String changeValue(@Nullable final String value)
+	public String modifyValue(@Nullable final String value)
 	{
 		String newValue = value;
 

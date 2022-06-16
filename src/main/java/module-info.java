@@ -1,9 +1,9 @@
-module dev.kalenchukov.fieldvaluechanger
+module dev.kalenchukov.lemna.changing
 {
 	requires org.jetbrains.annotations;
 	requires log4j;
 
-	exports dev.kalenchukov.fieldvaluechanger;
-	exports dev.kalenchukov.fieldvaluechanger.exceptions;
-	exports dev.kalenchukov.fieldvaluechanger.annotations;
+	exports dev.kalenchukov.lemna.changing;
+	exports dev.kalenchukov.lemna.changing.exceptions;
+	exports dev.kalenchukov.lemna.changing.annotations;
 }

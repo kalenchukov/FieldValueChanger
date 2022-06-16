@@ -1,6 +1,6 @@
-package dev.kalenchukov.fieldvaluechanger.annotations;
+package dev.kalenchukov.lemna.changing.annotations;
 
-import dev.kalenchukov.fieldvaluechanger.Changing;
+import dev.kalenchukov.lemna.changing.Modificatory;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.annotation.*;
@@ -19,7 +19,7 @@ public @interface Changer
 	 * @return Класс изменяющего значение поля.
 	 */
 	@NotNull
-	Class<? extends Changing<?>> changer();
+	Class<? extends Modificatory<?>> modifier();
 
 	/**
 	 * Позволяет указывать множество {@code Changer} для одного поля.

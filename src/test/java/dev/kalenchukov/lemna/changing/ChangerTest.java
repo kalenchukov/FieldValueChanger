@@ -4,18 +4,17 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.fieldvaluechanger;
+package dev.kalenchukov.lemna.changing;
 
-import dev.kalenchukov.fieldvaluechanger.annotations.Changer;
-import dev.kalenchukov.fieldvaluechanger.supports.CommentChanger;
-import dev.kalenchukov.fieldvaluechanger.supports.CommentNullChanger;
-import dev.kalenchukov.fieldvaluechanger.supports.PriceChanger;
-import dev.kalenchukov.fieldvaluechanger.supports.QuoteChanger;
+import dev.kalenchukov.lemna.changing.supports.CommentModifier;
+import dev.kalenchukov.lemna.changing.supports.CommentNullModifier;
+import dev.kalenchukov.lemna.changing.supports.PriceModifier;
+import dev.kalenchukov.lemna.changing.supports.QuoteModifier;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public final class FieldValueChangerTest
+public final class ChangerTest
 {
     /**
      * Проверка изменения значений нескольких полей класса.
@@ -25,10 +24,10 @@ public final class FieldValueChangerTest
     {
         class Experimental
         {
-			@Changer(changer = CommentChanger.class)
+			@dev.kalenchukov.lemna.changing.annotations.Changer(modifier = CommentModifier.class)
             private String comment = "Мой комментарий";
 
-			@Changer(changer = PriceChanger.class)
+			@dev.kalenchukov.lemna.changing.annotations.Changer(modifier = PriceModifier.class)
 			private Double price = 20.05;
 
 			public String getComment()
@@ -44,7 +43,7 @@ public final class FieldValueChangerTest
 
         Experimental experimental = new Experimental();
 
-        FieldValueChanging fieldValueChanger = new FieldValueChanger(experimental);
+        Changing fieldValueChanger = new Changer(experimental);
 		fieldValueChanger.change();
 
         assertEquals("МОЙ КОММЕНТАРИЙ к классу 'Experimental'", experimental.getComment());
@@ -59,9 +58,9 @@ public final class FieldValueChangerTest
 	{
 		class Experimental
 		{
-			@Changer.ManyChanger({
-				@Changer(changer = CommentChanger.class),
-				@Changer(changer = QuoteChanger.class)
+			@dev.kalenchukov.lemna.changing.annotations.Changer.ManyChanger({
+				@dev.kalenchukov.lemna.changing.annotations.Changer(modifier = CommentModifier.class),
+				@dev.kalenchukov.lemna.changing.annotations.Changer(modifier = QuoteModifier.class)
 			})
 			private String comment = "Мой комментарий";
 
@@ -73,7 +72,7 @@ public final class FieldValueChangerTest
 
 		Experimental experimental = new Experimental();
 
-		FieldValueChanging fieldValueChanger = new FieldValueChanger(experimental);
+		Changing fieldValueChanger = new Changer(experimental);
 		fieldValueChanger.change();
 
 		assertEquals("'МОЙ КОММЕНТАРИЙ к классу 'Experimental''", experimental.getComment());
@@ -87,7 +86,7 @@ public final class FieldValueChangerTest
 	{
 		class Experimental
 		{
-			@Changer(changer = CommentNullChanger.class)
+			@dev.kalenchukov.lemna.changing.annotations.Changer(modifier = CommentNullModifier.class)
 			private String comment = "Мой комментарий";
 
 			public String getComment()
@@ -98,7 +97,7 @@ public final class FieldValueChangerTest
 
 		Experimental experimental = new Experimental();
 
-		FieldValueChanging fieldValueChanger = new FieldValueChanger(experimental);
+		Changing fieldValueChanger = new Changer(experimental);
 		fieldValueChanger.change();
 
 		assertNull(experimental.getComment());

@@ -4,7 +4,7 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.fieldvaluechanger.exceptions;
+package dev.kalenchukov.lemna.changing.exceptions;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -13,14 +13,14 @@ import java.util.Objects;
 /**
  * Исключение для некорректного изменяющего значение поля.
  */
-public class InvalidChangerClassException extends RuntimeException
+public class InvalidModifyingClassException extends RuntimeException
 {
     /**
      * Конструктор для {@code InvalidChangerException}.
      *
      * @param message Сообщение.
      */
-    public InvalidChangerClassException(@NotNull final String message)
+    public InvalidModifyingClassException(@NotNull final String message)
     {
         super(Objects.requireNonNull(message));
     }
